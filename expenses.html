@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Management</title>
+<style>
+body{font-family:Arial;margin:0;background:#f4f4f4;}
+header{background:#006400;color:#fff;padding:15px;text-align:center;}
+.container{max-width:900px;margin:20px auto;background:#fff;padding:20px;border-radius:10px;}
+input,select{width:100%;padding:10px;margin:10px 0;}
+button{width:100%;padding:12px;background:#006400;color:#fff;border:none;border-radius:5px;}
+table{width:100%;margin-top:20px;border-collapse:collapse;}
+table,th,td{border:1px solid #ccc;}
+th{background:#006400;color:#fff;}
+th,td{padding:10px;text-align:center;}
+</style>
+</head>
+<body>
+
+<header>
+<h2>Expense Management</h2>
+</header>
+
+<div class="container">
+
+<input type="text" id="purpose" placeholder="Expense Purpose">
+
+<input type="number" id="amount" placeholder="Amount">
+
+<input type="date" id="date">
+
+<button onclick="saveExpense()">Save Expense</button>
+
+<table id="expenseTable">
+<tr>
+<th>Purpose</th>
+<th>Amount</th>
+<th>Date</th>
+</tr>
+</table>
+
+</div>
+
+<script>
+function saveExpense(){
+
+let purpose=document.getElementById("purpose").value;
+let amount=document.getElementById("amount").value;
+let date=document.getElementById("date").value;
+
+if(purpose==""||amount==""||date==""){
+alert("Please fill all fields");
+return;
+}
+
+let table=document.getElementById("expenseTable");
+
+let row=table.insertRow();
+
+row.insertCell(0).innerHTML=purpose;
+row.insertCell(1).innerHTML="₹ "+amount;
+row.insertCell(2).innerHTML=date;
+
+}
+</script>
+
+</body>
+</html>
