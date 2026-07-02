@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member ID Card</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+}
+
+header{
+background:#006400;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+.card{
+width:350px;
+margin:30px auto;
+background:white;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,.2);
+padding:20px;
+text-align:center;
+}
+
+.logo{
+width:80px;
+height:80px;
+border-radius:50%;
+}
+
+.photo{
+width:100px;
+height:100px;
+border:2px solid #006400;
+border-radius:50%;
+margin-top:15px;
+}
+
+h2{
+color:#006400;
+}
+
+.info{
+text-align:left;
+margin-top:20px;
+}
+
+.info p{
+margin:8px 0;
+font-size:16px;
+}
+
+button{
+margin-top:20px;
+background:#006400;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>FIKR-E-RAZA Mission</h1>
+</header>
+
+<div class="card">
+
+<img src="assets/logo.png" class="logo">
+
+<h2>Member ID Card</h2>
+
+<img src="assets/member.jpg" class="photo">
+
+<div class="info">
+
+<p><b>Name:</b> Member Name</p>
+
+<p><b>ID:</b> FRM001</p>
+
+<p><b>Role:</b> Member</p>
+
+<p><b>Mobile:</b> 9876543210</p>
+
+<p><b>City:</b> Patna</p>
+
+</div>
+
+<button onclick="window.print()">
+Print ID Card
+</button>
+
+</div>
+
+</body>
+</html>
