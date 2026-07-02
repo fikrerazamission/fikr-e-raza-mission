@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports Dashboard</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f6f9;
+}
+header{
+background:#006400;
+color:#fff;
+padding:18px;
+text-align:center;
+}
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:25px;
+}
+.card{
+background:#fff;
+padding:20px;
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,.15);
+text-align:center;
+}
+.card h3{
+color:#006400;
+}
+button{
+margin-top:15px;
+padding:10px 20px;
+background:#006400;
+color:#fff;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>Reports Dashboard</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h3>Member Report</h3>
+<button>View</button>
+</div>
+
+<div class="card">
+<h3>Attendance Report</h3>
+<button>View</button>
+</div>
+
+<div class="card">
+<h3>Payment Report</h3>
+<button>View</button>
+</div>
+
+<div class="card">
+<h3>Expense Report</h3>
+<button>View</button>
+</div>
+
+<div class="card">
+<h3>Donation Report</h3>
+<button>View</button>
+</div>
+
+<div class="card">
+<h3>PDF Report</h3>
+<button>Download</button>
+</div>
+
+</div>
+
+</body>
+</html>
