@@ -4,66 +4,160 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Expense Management</title>
+
 <style>
-body{font-family:Arial;margin:0;background:#f4f4f4;}
-header{background:#006400;color:#fff;padding:15px;text-align:center;}
-.container{max-width:900px;margin:20px auto;background:#fff;padding:20px;border-radius:10px;}
-input,select{width:100%;padding:10px;margin:10px 0;}
-button{width:100%;padding:12px;background:#006400;color:#fff;border:none;border-radius:5px;}
-table{width:100%;margin-top:20px;border-collapse:collapse;}
-table,th,td{border:1px solid #ccc;}
-th{background:#006400;color:#fff;}
-th,td{padding:10px;text-align:center;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
+}
+
+header{
+background:#006400;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+.container{
+width:95%;
+max-width:1000px;
+margin:20px auto;
+}
+
+.form-box{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,.2);
+margin-bottom:20px;
+}
+
+.form-box h2{
+color:#006400;
+margin-bottom:15px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+button{
+padding:12px 20px;
+background:#006400;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#008000;
+}
+
+.search{
+margin-bottom:15px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+
+th,td{
+padding:12px;
+border:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#006400;
+color:white;
+}
+
+@media(max-width:768px){
+table{
+font-size:14px;
+}
+
+button{
+width:100%;
+}
+}
 </style>
+
 </head>
+
 <body>
 
 <header>
-<h2>Expense Management</h2>
+<h1>Expense Management</h1>
 </header>
 
 <div class="container">
 
-<input type="text" id="purpose" placeholder="Expense Purpose">
+<div class="form-box">
+
+<h2>Add Expense</h2>
+
+<input type="text" id="expenseName" placeholder="Expense Name">
+
+<select id="category">
+<option value="">Select Category</option>
+<option>Office</option>
+<option>Travel</option>
+<option>Food</option>
+<option>Event</option>
+<option>Other</option>
+</select>
 
 <input type="number" id="amount" placeholder="Amount">
 
-<input type="date" id="date">
+<input type="date" id="expenseDate">
 
-<button onclick="saveExpense()">Save Expense</button>
+<button onclick="addExpense()">Add Expense</button>
 
-<table id="expenseTable">
+</div>
+
+<input
+class="search"
+type="text"
+id="search"
+placeholder="Search Expense..."
+onkeyup="searchExpense()">
+
+<table>
+
+<thead>
+
 <tr>
-<th>Purpose</th>
+<th>Expense</th>
+<th>Category</th>
 <th>Amount</th>
 <th>Date</th>
+<th>Action</th>
 </tr>
+
+</thead>
+
+<tbody id="expenseTable">
+
+</tbody>
+
 </table>
 
 </div>
 
 <script>
-function saveExpense(){
-
-let purpose=document.getElementById("purpose").value;
-let amount=document.getElementById("amount").value;
-let date=document.getElementById("date").value;
-
-if(purpose==""||amount==""||date==""){
-alert("Please fill all fields");
-return;
-}
-
-let table=document.getElementById("expenseTable");
-
-let row=table.insertRow();
-
-row.insertCell(0).innerHTML=purpose;
-row.insertCell(1).innerHTML="₹ "+amount;
-row.insertCell(2).innerHTML=date;
-
-}
-</script>
-
-</body>
-</html>
