@@ -26,10 +26,19 @@ justify-content:space-between;
 align-items:center;
 }
 
+header h2{
+font-size:24px;
+}
+
 nav a{
 color:white;
 text-decoration:none;
 margin-left:15px;
+font-weight:bold;
+}
+
+nav a:hover{
+text-decoration:underline;
 }
 
 .hero{
@@ -41,21 +50,26 @@ background:white;
 .hero h1{
 font-size:40px;
 color:#006400;
+margin-bottom:15px;
 }
 
 .hero p{
-margin-top:15px;
 font-size:18px;
+margin-bottom:30px;
 }
 
 .btn{
 display:inline-block;
-margin-top:25px;
 padding:12px 25px;
 background:#006400;
 color:white;
 text-decoration:none;
 border-radius:6px;
+font-size:18px;
+}
+
+.btn:hover{
+background:#008000;
 }
 
 footer{
@@ -65,6 +79,27 @@ text-align:center;
 padding:20px;
 margin-top:60px;
 }
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+}
+
+nav{
+margin-top:10px;
+}
+
+nav a{
+display:inline-block;
+margin:5px;
+}
+
+.hero h1{
+font-size:30px;
+}
+
+}
 </style>
 
 </head>
@@ -72,13 +107,14 @@ margin-top:60px;
 <body>
 
 <header>
+
 <h2>FIKR-E-RAZA</h2>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
-<a href="#">Login</a>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="login.html">Login</a>
 </nav>
 
 </header>
@@ -87,13 +123,9 @@ margin-top:60px;
 
 <h1>Welcome to FIKR-E-RAZA Mission</h1>
 
-<p>
-A Modern Islamic Organization Management System
-</p>
+<p>A Modern Islamic Organization Management System</p>
 
-<a class="btn" href="#">
-Get Started
-</a>
+<a class="btn" href="login.html">Get Started</a>
 
 </section>
 
