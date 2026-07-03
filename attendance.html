@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Attendance Management</title>
+<title>Attendance - FIKR-E-RAZA Mission</title>
 
 <style>
-body{
-font-family:Arial,sans-serif;
-background:#f5f5f5;
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
 }
 
 header{
@@ -20,38 +25,64 @@ text-align:center;
 }
 
 .container{
-max-width:800px;
+width:95%;
+max-width:1000px;
 margin:20px auto;
+}
+
+.form-box{
 background:white;
 padding:20px;
 border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,.2);
+box-shadow:0 2px 8px rgba(0,0,0,.2);
+margin-bottom:20px;
 }
 
-input,select{
+.form-box h2{
+color:#006400;
+margin-bottom:15px;
+}
+
+input{
 width:100%;
-padding:10px;
-margin:10px 0;
+padding:12px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:6px;
 }
 
 button{
-background:#006400;
-color:white;
-padding:12px;
-width:100%;
+padding:10px 18px;
 border:none;
+border-radius:6px;
 cursor:pointer;
-border-radius:5px;
+margin:5px;
+color:white;
+}
+
+.present{
+background:green;
+}
+
+.absent{
+background:red;
+}
+
+.add{
+background:#006400;
 }
 
 table{
 width:100%;
-margin-top:20px;
 border-collapse:collapse;
+background:white;
+margin-top:20px;
 }
 
-table,th,td{
-border:1px solid #ccc;
+th,td{
+padding:12px;
+border:1px solid #ddd;
+text-align:center;
 }
 
 th{
@@ -59,65 +90,57 @@ background:#006400;
 color:white;
 }
 
-th,td{
-padding:10px;
-text-align:center;
+@media(max-width:768px){
+table{
+font-size:14px;
+}
 }
 </style>
+
 </head>
 
 <body>
 
 <header>
-<h2>Attendance Management</h2>
+<h1>Attendance Management</h1>
 </header>
 
 <div class="container">
 
-<input type="text" id="member" placeholder="Member Name">
+<div class="form-box">
 
-<input type="date" id="date">
+<h2>Add Member</h2>
 
-<select id="status">
-<option>Present</option>
-<option>Absent</option>
-<option>Leave</option>
-</select>
+<input type="text" id="memberName" placeholder="Enter Member Name">
 
-<button onclick="addAttendance()">Save Attendance</button>
+<button class="add" onclick="addMember()">Add Member</button>
 
-<table id="table">
+</div>
+
+<table>
+
+<thead>
+
 <tr>
-<th>Member</th>
+
+<th>Name</th>
+
 <th>Date</th>
+
 <th>Status</th>
+
+<th>Action</th>
+
 </tr>
+
+</thead>
+
+<tbody id="attendanceTable">
+
+</tbody>
+
 </table>
 
 </div>
 
 <script>
-function addAttendance(){
-
-let member=document.getElementById("member").value;
-let date=document.getElementById("date").value;
-let status=document.getElementById("status").value;
-
-if(member==""||date==""){
-alert("Please fill all fields");
-return;
-}
-
-let table=document.getElementById("table");
-
-let row=table.insertRow();
-
-row.insertCell(0).innerHTML=member;
-row.insertCell(1).innerHTML=date;
-row.insertCell(2).innerHTML=status;
-
-}
-</script>
-
-</body>
-</html>
