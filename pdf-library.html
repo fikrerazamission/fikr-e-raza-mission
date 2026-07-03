@@ -136,3 +136,85 @@ onkeyup="searchPDF()">
 </div>
 
 <script>
+let pdfs=[];
+
+function addPDF(){
+
+let name=document.getElementById("pdfName").value;
+let category=document.getElementById("category").value;
+let file=document.getElementById("pdfFile").files[0];
+
+if(name=="" || category=="" || !file){
+alert("Please fill all fields and select a PDF.");
+return;
+}
+
+pdfs.push({
+name:name,
+category:category,
+fileName:file.name
+});
+
+document.getElementById("pdfName").value="";
+document.getElementById("category").value="";
+document.getElementById("pdfFile").value="";
+
+showPDFs();
+
+}
+
+function showPDFs(){
+
+let table=document.getElementById("pdfTable");
+
+table.innerHTML="";
+
+pdfs.forEach((pdf,index)=>{
+
+table.innerHTML+=`
+<tr>
+<td>${pdf.name}</td>
+<td>${pdf.category}</td>
+<td>${pdf.fileName}</td>
+<td>
+<button onclick="deletePDF(${index})">Delete</button>
+</td>
+</tr>
+`;
+
+});
+
+}
+
+function deletePDF(index){
+
+if(confirm("Delete this PDF?")){
+
+pdfs.splice(index,1);
+
+showPDFs();
+
+}
+
+}
+
+function searchPDF(){
+
+let input=document.getElementById("search").value.toLowerCase();
+
+let rows=document.getElementById("pdfTable").getElementsByTagName("tr");
+
+for(let i=0;i<rows.length;i++){
+
+let txt=rows[i].innerText.toLowerCase();
+
+rows[i].style.display=txt.includes(input) ? "" : "none";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
