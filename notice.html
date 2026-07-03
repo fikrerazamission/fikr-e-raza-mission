@@ -6,9 +6,14 @@
 <title>Notice Board</title>
 
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
+}
+
+body{
 background:#f4f4f4;
 }
 
@@ -20,32 +25,60 @@ text-align:center;
 }
 
 .container{
-max-width:900px;
+width:95%;
+max-width:1000px;
 margin:20px auto;
-padding:20px;
 }
 
-.notice{
+.card{
 background:white;
 padding:20px;
-margin-bottom:15px;
-border-left:6px solid #006400;
-border-radius:8px;
-box-shadow:0 2px 8px rgba(0,0,0,.15);
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,.2);
+margin-bottom:20px;
 }
 
-.notice h3{
-margin:0;
-color:#006400;
+textarea,input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:6px;
 }
 
-.notice p{
-margin-top:10px;
+textarea{
+height:120px;
+resize:none;
 }
 
-.date{
-color:gray;
-font-size:14px;
+button{
+padding:12px 20px;
+background:#006400;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#008000;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+}
+
+th,td{
+padding:12px;
+border:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#006400;
+color:white;
 }
 </style>
 
@@ -59,25 +92,40 @@ font-size:14px;
 
 <div class="container">
 
-<div class="notice">
-<h3>Monthly Meeting</h3>
-<p>Monthly meeting will be held on the first Sunday of every month.</p>
-<div class="date">02 July 2026</div>
-</div>
+<div class="card">
 
-<div class="notice">
-<h3>Membership Drive</h3>
-<p>New members can register through the official website.</p>
-<div class="date">02 July 2026</div>
-</div>
+<h2>Add Notice</h2>
 
-<div class="notice">
-<h3>PDF Library Updated</h3>
-<p>New Islamic books and documents have been added.</p>
-<div class="date">02 July 2026</div>
-</div>
+<input type="text" id="title" placeholder="Notice Title">
+
+<textarea id="message" placeholder="Write Notice"></textarea>
+
+<button onclick="addNotice()">Publish Notice</button>
 
 </div>
 
-</body>
-</html>
+<input
+type="text"
+id="search"
+placeholder="Search Notice..."
+onkeyup="searchNotice()">
+
+<table>
+
+<thead>
+<tr>
+<th>Title</th>
+<th>Notice</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="noticeTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
