@@ -160,3 +160,82 @@ onkeyup="searchMember()">
 </div>
 
 <script>
+let members=[];
+
+function addMember(){
+
+let name=document.getElementById("name").value;
+let mobile=document.getElementById("mobile").value;
+let city=document.getElementById("city").value;
+
+if(name==""||mobile==""||city==""){
+alert("Please fill all fields");
+return;
+}
+
+members.push({
+name:name,
+mobile:mobile,
+city:city
+});
+
+document.getElementById("name").value="";
+document.getElementById("mobile").value="";
+document.getElementById("city").value="";
+
+showMembers();
+
+}
+
+function showMembers(){
+
+let table=document.getElementById("memberTable");
+
+table.innerHTML="";
+
+members.forEach((m,index)=>{
+
+table.innerHTML+=`
+<tr>
+<td>${m.name}</td>
+<td>${m.mobile}</td>
+<td>${m.city}</td>
+<td>
+<button onclick="deleteMember(${index})">Delete</button>
+</td>
+</tr>
+`;
+
+});
+
+}
+
+function deleteMember(index){
+
+members.splice(index,1);
+
+showMembers();
+
+}
+
+function searchMember(){
+
+let input=document.getElementById("search").value.toLowerCase();
+
+let rows=document.getElementById("memberTable").getElementsByTagName("tr");
+
+for(let i=0;i<rows.length;i++){
+
+let txt=rows[i].innerText.toLowerCase();
+
+rows[i].style.display=txt.includes(input)?"":"none";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+  
