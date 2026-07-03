@@ -144,3 +144,72 @@ font-size:14px;
 </div>
 
 <script>
+let attendance=[];
+
+function addMember(){
+
+let name=document.getElementById("memberName").value;
+
+if(name==""){
+alert("Please enter member name");
+return;
+}
+
+let today=new Date().toLocaleDateString();
+
+attendance.push({
+name:name,
+date:today,
+status:"Not Marked"
+});
+
+document.getElementById("memberName").value="";
+
+showAttendance();
+
+}
+
+function showAttendance(){
+
+let table=document.getElementById("attendanceTable");
+
+table.innerHTML="";
+
+attendance.forEach((m,index)=>{
+
+table.innerHTML+=`
+<tr>
+<td>${m.name}</td>
+<td>${m.date}</td>
+<td>${m.status}</td>
+<td>
+<button class="present" onclick="markPresent(${index})">Present</button>
+<button class="absent" onclick="markAbsent(${index})">Absent</button>
+</td>
+</tr>
+`;
+
+});
+
+}
+
+function markPresent(index){
+
+attendance[index].status="Present";
+
+showAttendance();
+
+}
+
+function markAbsent(index){
+
+attendance[index].status="Absent";
+
+showAttendance();
+
+}
+
+</script>
+
+</body>
+</html>
