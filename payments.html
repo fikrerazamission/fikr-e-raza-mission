@@ -6,96 +6,156 @@
 <title>Payment Management</title>
 
 <style>
-body{font-family:Arial;background:#f5f5f5;margin:0;}
-header{background:#006400;color:#fff;padding:15px;text-align:center;}
-.container{max-width:900px;margin:20px auto;background:#fff;padding:20px;border-radius:10px;}
-input,select{
-width:100%;
-padding:10px;
-margin:10px 0;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
-button{
+
+body{
+background:#f4f4f4;
+}
+
+header{
+background:#006400;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+.container{
+width:95%;
+max-width:1000px;
+margin:20px auto;
+}
+
+.form-box{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,.2);
+margin-bottom:20px;
+}
+
+.form-box h2{
+color:#006400;
+margin-bottom:15px;
+}
+
+input{
 width:100%;
 padding:12px;
-background:#006400;
-color:#fff;
-border:none;
-border-radius:5px;
-cursor:pointer;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:6px;
 }
+
+button{
+padding:12px 20px;
+background:#006400;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#008000;
+}
+
+.search{
+margin-bottom:15px;
+}
+
 table{
 width:100%;
 border-collapse:collapse;
-margin-top:20px;
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,.2);
 }
-table,th,td{
-border:1px solid #ccc;
-}
-th{
-background:#006400;
-color:#fff;
-}
+
 th,td{
-padding:10px;
+padding:12px;
+border:1px solid #ddd;
 text-align:center;
 }
+
+th{
+background:#006400;
+color:white;
+}
+
+@media(max-width:768px){
+
+table{
+font-size:14px;
+}
+
+button{
+width:100%;
+}
+
+}
+
 </style>
 
 </head>
+
 <body>
 
 <header>
-<h2>Payment Management</h2>
+<h1>Payment Management</h1>
 </header>
 
 <div class="container">
 
-<input type="text" id="name" placeholder="Member Name">
+<div class="form-box">
+
+<h2>Add Payment</h2>
+
+<input type="text" id="memberName" placeholder="Member Name">
 
 <input type="number" id="amount" placeholder="Amount">
 
-<select id="type">
-<option>Membership Fee</option>
-<option>Donation</option>
-<option>Other</option>
-</select>
+<input type="date" id="paymentDate">
 
-<button onclick="savePayment()">Save Payment</button>
+<button onclick="addPayment()">
+Add Payment
+</button>
 
-<table id="paymentTable">
+</div>
+
+<input
+class="search"
+type="text"
+id="search"
+placeholder="Search Payment..."
+onkeyup="searchPayment()">
+
+<table>
+
+<thead>
+
 <tr>
-<th>Name</th>
+
+<th>Member</th>
 <th>Amount</th>
-<th>Type</th>
+<th>Date</th>
+<th>Action</th>
+
 </tr>
+
+</thead>
+
+<tbody id="paymentTable">
+
+</tbody>
+
 </table>
 
 </div>
 
 <script>
-function savePayment(){
-
-let name=document.getElementById("name").value;
-let amount=document.getElementById("amount").value;
-let type=document.getElementById("type").value;
-
-if(name==""||amount==""){
-alert("Fill all fields");
-return;
-}
-
-let table=document.getElementById("paymentTable");
-
-let row=table.insertRow();
-
-row.insertCell(0).innerHTML=name;
-row.insertCell(1).innerHTML="₹ "+amount;
-row.insertCell(2).innerHTML=type;
-
-document.getElementById("name").value="";
-document.getElementById("amount").value="";
-}
-</script>
-
-</body>
-</html>
