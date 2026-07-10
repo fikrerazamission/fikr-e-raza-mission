@@ -88,3 +88,67 @@ FIKR-E-RAZA Mission Payment Management
 
 <div class="container">
 <div class="card">
+  </div>
+</div>
+
+<script>
+
+let payments=[];
+
+function addPayment(){
+
+let id=document.getElementById("memberId").value;
+let name=document.getElementById("memberName").value;
+let amount=document.getElementById("amount").value;
+let month=document.getElementById("paymentMonth").value;
+let date=document.getElementById("paymentDate").value;
+
+if(id=="" || amount=="" || month=="" || date==""){
+alert("Please fill all fields");
+return;
+}
+
+payments.push({
+id:id,
+name:name,
+amount:amount,
+month:month,
+date:date
+});
+
+showPayments();
+
+document.getElementById("memberId").value="";
+document.getElementById("memberName").value="";
+document.getElementById("amount").value="";
+document.getElementById("paymentMonth").value="";
+document.getElementById("paymentDate").value="";
+
+}
+
+function showPayments(){
+
+let table=document.getElementById("paymentTable");
+
+table.innerHTML="";
+
+payments.forEach(p=>{
+
+table.innerHTML+=`
+<tr>
+<td>${p.id}</td>
+<td>${p.name}</td>
+<td>₹${p.amount}</td>
+<td>${p.month}</td>
+<td>${p.date}</td>
+</tr>
+`;
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
